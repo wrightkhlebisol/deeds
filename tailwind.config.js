@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'deed-green': '#4ade80',
+        'deed-yellow': '#fbbf24',
+        'deed-red': '#f87171',
+      }
+    },
   },
   plugins: [],
 }
