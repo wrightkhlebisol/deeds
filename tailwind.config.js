@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'deed-green': '#4ade80',
-        'deed-yellow': '#fbbf24',
-        'deed-red': '#f87171',
+        'deed-good': '#4ade80',
+        'deed-meh': '#fbbf24',
+        'deed-bad': '#f87171',
       }
     },
   },
