@@ -1,11 +1,12 @@
-import DeedGrid from "../components/DeedGrid";
+import DeedGrid from "../components/home/PopularGrid";
+import Search from "../components/home/Search";
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <>
+      <Search />
       <DeedGrid />
-    </div>
+    </>
   )
 }
 
