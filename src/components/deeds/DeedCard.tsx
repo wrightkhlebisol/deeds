@@ -24,11 +24,11 @@ export default function DeedCard({ deed }: DeedCardProps) {
         </div>
 
         <div className="mt-2 text-xs text-gray-500">
-          {deed.isAnonymous ? 'Anonymous' : 'Verified User'} • 
+          {deed.isAnonymous ? 'Anonymous' : 'Verified'} • 
           Weight: {deed.weight.toFixed(1)}
         </div>
       </div>
-      {isOpened && <DeedDetailsModal deed={deed}/>}
+      {isOpened && <DeedDetailsModal deed={deed} open={isOpened} setOpen={setIsOpened} />}
     </div>
   );
 } 
