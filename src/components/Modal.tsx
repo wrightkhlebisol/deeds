@@ -1,8 +1,13 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 
-export default function Modal({ children }: { children: ReactNode }) {
-  const [open, setOpen] = useState(true)
+interface ModalProps {
+  children: ReactNode;
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}
+
+export default function Modal({ children, open, setOpen }: ModalProps) {
 
   return (
     <Dialog open={open} onClose={setOpen} className="relative z-10">
