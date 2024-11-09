@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { MenuItem, MenuItems } from '@headlessui/react';
 import { LogIn, LogOut, UserPlus } from 'lucide-react';
 import Login from "../auth/Login";
@@ -9,7 +10,8 @@ interface OptionDropdownProps {
 }
 
 export default function OptionDropdown({ loggedIn, setLoggedIn }: OptionDropdownProps) {
-  
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
   const logOut = () => setLoggedIn(false);
 
   return (
@@ -22,14 +24,14 @@ export default function OptionDropdown({ loggedIn, setLoggedIn }: OptionDropdown
         {!loggedIn ? 
           <>
             <MenuItem>
-              <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+              <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10" onClick={() => setLoginOpen(!loginOpen)}>
                 <LogIn className="size-4 fill-white/30" />
                 Login
               </button>
             </MenuItem>
             <div className="my-1 h-px bg-white/5" />
             <MenuItem>
-              <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+              <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10" onClick={() => setRegisterOpen(!registerOpen)}>
                 <UserPlus className="size-4 fill-white/30" />
                 Register
               </button>
@@ -45,8 +47,8 @@ export default function OptionDropdown({ loggedIn, setLoggedIn }: OptionDropdown
           </MenuItem>
         }
       </MenuItems>
-      <Login />
-      <Register />
+      <Login open={loginOpen} setOpen={setLoginOpen} />
+      <Register open={registerOpen} setOpen={setRegisterOpen} />
     </div>
   )
 }

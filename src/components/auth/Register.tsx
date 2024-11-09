@@ -1,10 +1,13 @@
 import { Field, Fieldset, Input, Label, Legend, Button } from '@headlessui/react';
-import { useState } from 'react';
 import clsx from 'clsx';
 import Modal from '../Modal';
 
-export default function Register() {
-    const [open, setOpen] = useState(false);
+interface RegisterProps {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}
+
+export default function Register({ open, setOpen }: RegisterProps) {
 
   return (
     <Modal open={open} setOpen={setOpen}>
