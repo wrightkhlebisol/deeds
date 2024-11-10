@@ -7,6 +7,15 @@ export type DeedEvidence = {
   timestamp: Date;
 };
 
+export interface DeedComment {
+  id: string;
+  userId: string;
+  deedId: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Deed {
   id: string;
   name: string,
@@ -33,6 +42,7 @@ export interface Deed {
     url: string;
     automated: boolean;
   };
+  comments: DeedComment[];
 }
 
 export interface UserProfile {
