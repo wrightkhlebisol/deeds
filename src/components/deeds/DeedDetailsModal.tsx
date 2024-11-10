@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { DialogTitle } from '@headlessui/react'
+import clsx from 'clsx';
+import { DialogTitle, Fieldset, Field, Label, Textarea, Button } from '@headlessui/react'
 import { Deed } from '../../types';
 // import { useAuth } from '../contexts/AuthContext';
 import DeedRating from './DeedRating';
 import CommentCard from './CommentCard';
-import { ChevronRight, LucideMessageSquareQuote, UserRoundCheck, UserX } from 'lucide-react';
+import { ChevronDown, ChevronRight, LucideMessageSquareQuote, PlusSquareIcon, UserRoundCheck, UserX } from 'lucide-react';
 import Modal from '../Modal';
 
 interface DeedCardProps {
@@ -15,6 +16,9 @@ interface DeedCardProps {
 
 export default function DeedDetailsModal({ deed, open, setOpen }: DeedCardProps) {
   const [commentOpen, setCommentOpen] = useState(false);
+  const [comment, setComment] = useState('');
+  const [toggleCreateComment, setToggleCreateComment] = useState(false);
+
   return (
     <Modal open={open} setOpen={setOpen}>
       {/* Deed content */}
@@ -63,13 +67,35 @@ export default function DeedDetailsModal({ deed, open, setOpen }: DeedCardProps)
       <div>
         {/* Comments Metadata */}
         <div className="flex flex-row justify-between p-3">
-          <div className='flex flex-row gap-1'>
+          <div className='flex flex-row gap-1 justify-center align-bottom bg-center content-center cursor-pointer' onClick={() => setCommentOpen(!commentOpen)} >
             <LucideMessageSquareQuote />
             <h4 className="text-lg font-semibold">Comments [{deed.comments.length}]</h4>
+            {commentOpen ? <ChevronDown /> : <ChevronRight />}
           </div>
-          <ChevronRight className="cursor-pointer" onClick={() => setCommentOpen(!commentOpen)} />
+          <PlusSquareIcon className="cursor-pointer" onClick={() => setToggleCreateComment(!toggleCreateComment)} />
         </div>
-        {/* Comment content */}
+        {/* Create Comment Section */}
+        {toggleCreateComment && <form action="">
+          <Fieldset className="space-y-3 rounded-xl p-3 sm:p-3">
+            <Field>
+              <Label className="text-sm/6 font-medium">Comment</Label>
+              <Textarea
+                className={clsx(
+                  'mt-3 block w-full resize-none rounded-lg border-none bg-black/5 py-1.5 px-3 text-sm/6 text-black',
+                  'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-black/25'
+                )}
+                required
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+            </Field>
+            <Button className="w-full bg-cyan-500 hover:bg-cyan-400 text-white rounded-full shadow-sm" type="submit">Submit</Button>
+          </Fieldset>
+        </form>}
+        <div>
+
+        </div>
+        {/* Comment content dropdown */}
         {
           commentOpen &&
           <div className={`flex flex-col gap-3 p-3 text-white bg-deed-${deed.type} max-h-80 overflow-auto`}>

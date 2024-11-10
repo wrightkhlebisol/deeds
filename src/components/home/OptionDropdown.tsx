@@ -47,8 +47,8 @@ export default function OptionDropdown({ loggedIn, setLoggedIn }: OptionDropdown
           </MenuItem>
         }
       </MenuItems>
-      <Login open={loginOpen} setOpen={setLoginOpen} />
-      <Register open={registerOpen} setOpen={setRegisterOpen} />
+      <Login open={loginOpen} setOpen={setLoginOpen} openRegister={setRegisterOpen} />
+      <Register open={registerOpen} setOpen={setRegisterOpen} openLogin={setLoginOpen} />
     </div>
   )
 }
