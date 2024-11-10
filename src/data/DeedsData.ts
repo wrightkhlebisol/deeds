@@ -27,7 +27,25 @@ export const deeds: Deed[] = [
     votes: {
       up: 25,
       down: 2
-    }
+    },
+    comments: [
+      {
+        id: '1',
+        userId: '2',
+        deedId: '1',
+        description: 'Great job, John! Keep up the good work.',
+        createdAt: new Date('2024-01-16'),
+        updatedAt: new Date('2024-01-16')
+      },
+      {
+        id: '2',
+        userId: '3',
+        deedId: '1',
+        description: 'I was there too, and John was a huge help!',
+        createdAt: new Date('2024-01-17'),
+        updatedAt: new Date('2024-01-17')
+      }
+    ]
   },
   {
     id: '2',
@@ -48,7 +66,345 @@ export const deeds: Deed[] = [
     votes: {
       up: 5,
       down: 15
-    }
+    },
+    comments: [
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding. Jane should learn to be more patient and understanding. Jane should learn to be more patient and understanding. Jane should learn to be more patient and understanding. Jane should learn to be more patient and understanding. Jane should learn to be more patient and understanding. Jane should learn to be more patient and understanding. Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      },
+      {
+        id: '3',
+        userId: '4',
+        deedId: '2',
+        description: 'Jane should learn to be more patient and understanding.',
+        createdAt: new Date('2024-02-02'),
+        updatedAt: new Date('2024-02-02')
+      }
+    ]
   },
   {
     id: '3',
@@ -76,7 +432,17 @@ export const deeds: Deed[] = [
     votes: {
       up: 42,
       down: 1
-    }
+    },
+    comments: [
+      {
+        id: '4',
+        userId: '5',
+        deedId: '3',
+        description: 'Thank you for supporting the children\'s hospital!',
+        createdAt: new Date('2024-02-11'),
+        updatedAt: new Date('2024-02-11')
+      }
+    ]
   },
   {
     id: '4',
@@ -104,7 +470,17 @@ export const deeds: Deed[] = [
     votes: {
       up: 33,
       down: 0
-    }
+    },
+    comments: [
+      {
+        id: '5',
+        userId: '1',
+        deedId: '4',
+        description: 'Bob is a great example of a caring neighbor!',
+        createdAt: new Date('2024-02-16'),
+        updatedAt: new Date('2024-02-16')
+      }
+    ]
   },
   {
     id: '5',
@@ -125,6 +501,16 @@ export const deeds: Deed[] = [
     votes: {
       up: 8,
       down: 12
-    }
+    },
+    comments: [
+      {
+        id: '6',
+        userId: '2',
+        deedId: '5',
+        description: 'Charlie should communicate better with the team.',
+        createdAt: new Date('2024-02-21'),
+        updatedAt: new Date('2024-02-21')
+      }
+    ]
   }
 ]; 
