@@ -4,11 +4,12 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import OptionDropdown from "./home/OptionDropdown";
 import { Menu, MenuButton } from "@headlessui/react";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Header() {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+  const {currentUser} = useAuth();
 
   return (
       // Header with logo and profile image
@@ -23,7 +24,7 @@ export default function Header() {
       {/* Profile Image */}
       <Menu>
         <MenuButton className="flex w-12 h-12 bg-gray-200 rounded-full overflow-hidden justify-center">
-          {loggedIn ? 
+          {currentUser ? 
             <LazyLoadImage
             src="https://randomuser.me/api/portraits/men/1.jpg"
             alt="Profile"
@@ -33,7 +34,7 @@ export default function Header() {
             />: <LockKeyhole className="text-gray-500 w-8 h-8 self-center cursor-pointer" onClick={toggleDropdown}/>
           }
         </MenuButton> 
-        <OptionDropdown loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        <OptionDropdown currentUser={currentUser} />
       </Menu>
     </div>
   )
