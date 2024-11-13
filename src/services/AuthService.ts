@@ -4,30 +4,28 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 export const createUser = async (email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    return user;
+    return { user: userCredential.user, error: null };
   } catch (error) {
     console.error(error);
-    return error;
+    return { user: null, error };
   }
 }
 
 export const loginUser = async (email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password)
-    const user = userCredential.user;
-    return user;
+    return { user: userCredential.user, error: null }
   } catch (error) {
-    console.error(error);
-    return error;
+    console.log(error);
+    return { user: null, error };
   }
 }
 
-export const logOutUser = () => {
+export const logOutUser = async () => {
   try {
-    signOut(auth);
+    await signOut(auth);
   } catch (error) {
     console.error(error);
-    return error;
+    return { error };
   }
 }
