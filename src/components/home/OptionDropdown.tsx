@@ -3,16 +3,19 @@ import { MenuItem, MenuItems } from '@headlessui/react';
 import { LogIn, LogOut, UserPlus } from 'lucide-react';
 import Login from "../auth/Login";
 import Register from "../auth/Register";
+import { useAuth } from '../../contexts/AuthContext';
+import { User } from 'firebase/auth';
 
 interface OptionDropdownProps {
-  loggedIn: boolean;
-  setLoggedIn: (value: boolean) => void;
+  currentUser: User | null;
 }
 
-export default function OptionDropdown({ loggedIn, setLoggedIn }: OptionDropdownProps) {
+export default function OptionDropdown({ currentUser }: OptionDropdownProps) {
   const [loginOpen, setLoginOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
-  const logOut = () => setLoggedIn(false);
+
+  const {logOutUser} = useAuth();
+  const logOut = async () => await logOutUser();
 
   return (
     <div className="fixed top-24 w-40 text-right">
@@ -21,7 +24,7 @@ export default function OptionDropdown({ loggedIn, setLoggedIn }: OptionDropdown
         anchor="bottom end"
         className="w-52 origin-top-right rounded-xl border border-white/5 bg-black/5 p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0 bg-slate-600"
       >
-        {!loggedIn ? 
+        {!currentUser ? 
           <>
             <MenuItem>
               <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10" onClick={() => setLoginOpen(!loginOpen)}>
