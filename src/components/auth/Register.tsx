@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Field, Fieldset, Input, Label, Legend, Button } from '@headlessui/react';
 import clsx from 'clsx';
 import Modal from '../Modal';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface RegisterProps {
   open: boolean;
@@ -10,6 +11,8 @@ interface RegisterProps {
 }
 
 export default function Register({ open, setOpen, openLogin }: RegisterProps) {
+  const { createUser } = useAuth();
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,17 +20,78 @@ export default function Register({ open, setOpen, openLogin }: RegisterProps) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [linkedin, setLinkedin] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleLogin = () => {
     setOpen(!open)
     openLogin(true)
   }
 
+  const registerUser = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      // Compare password and confirm password
+      if (password !== confirmPassword) {
+        setError('Passwords do not match. Please try again.');
+        return;
+      }
+      // Call the register service
+      const { error } = await createUser(email, password)
+      if (error) {
+        const errorCode = (error as { code?: string })?.code
+        switch (errorCode) {
+          case 'auth/email-already-in-use':
+            setError('Email already in use. Please try again.');
+            break;
+          case 'auth/invalid-email':
+            setError('Invalid email. Please try again.');
+            break;
+          case 'auth/weak-password':
+            setError('Weak password. Please try again.');
+            break;
+          case 'auth/network-request-failed':
+            setError('Network error. Please check your internet connection.');
+            break;
+          case 'auth/too-many-requests':
+            setError('Too many requests. Please try again later.');
+            break;
+          default:
+            setError('Failed to register. Please try again.');
+            break;
+        }
+        return;
+      }
+
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+      setIsAnonymous(false)
+      setLinkedin('')
+    } catch (error) {
+      console.error(error);
+      setError('Failed to register. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <Modal open={open} setOpen={setOpen}>
-      <form className="w-full max-w-lg">
+      <form className="w-full max-w-lg" onSubmit={e => {
+        e.preventDefault();
+        registerUser();
+      }}>
         <Fieldset className="space-y-3 rounded-xl bg-black/5 p-6 sm:p-10">
           <Legend className="text-base/10  font-semibold text-black">Register</Legend>
+          {error && (
+            <div className="text-red-500 text-sm mb-4">
+              {error}
+            </div>
+          )}
           <div className="my-1 h-px bg-gray-300" />
           <div className="flex justify-between gap-3">
             <Field className="w-full">
@@ -81,7 +145,6 @@ export default function Register({ open, setOpen, openLogin }: RegisterProps) {
               type='checkbox'
               checked={isAnonymous}
               onChange={() => setIsAnonymous(!isAnonymous)}
-              required
             />
           </Field>
           <div className="my-1 h-px bg-gray-300" />
@@ -127,7 +190,9 @@ export default function Register({ open, setOpen, openLogin }: RegisterProps) {
             />
           </Field>
           <Field className="flex gap-5 pt-5">
-            <Button className="w-9/12 bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 text-sm/6 font-semibold" type='submit'>Register</Button>
+            <Button className="w-9/12 bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 text-sm/6 font-semibold" type='submit'>{
+              isLoading ? 'Loading...' : 'Register'
+            }</Button>
             <p className="w-3/12 text-blue-500 hover:text-blue-400 rounded-lg py-2 text-sm/6 cursor-pointer" onClick={toggleLogin}>Login Instead?</p>
           </Field>
         </Fieldset>

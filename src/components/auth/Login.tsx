@@ -37,13 +37,24 @@ export default function Login({ open, setOpen, openRegister }: LoginProps) {
       const { error } = await loginUser(email, password)
       
       if (error) {
-        if ((error as {code?: string})?.code === 'auth/invalid-credential') { 
-          setError('Invalid credentials. Please try again.');
-        }else if ((error as { code?: string })?.code === 'auth/network-request-failed') {
-          setError('Network error. Please check your internet connection.');
-        } else {
-          setError('Failed to login. Please try again.');
-        }
+        const errorCode = (error as { code?: string })?.code;
+        switch (errorCode) { 
+          case 'auth/user-not-found':
+            setError('User not found. Please try again.');
+            break;
+          case 'auth/wrong-password':
+            setError('Wrong password. Please try again.');
+            break;
+          case 'auth/invalid-credential':
+            setError('Invalid credentials. Please try again.');
+            break;
+          case 'auth/network-request-failed':
+            setError('Network error. Please check your internet connection.');
+            break;
+          default:
+            setError('Failed to login. Please try again.');
+            break;
+        } 
         return;
       }
       setEmail('')
