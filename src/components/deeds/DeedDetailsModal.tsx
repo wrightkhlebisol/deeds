@@ -7,6 +7,8 @@ import DeedRating from './DeedRating';
 import CommentCard from './CommentCard';
 import { ChevronDown, ChevronRight, LucideMessageSquareQuote, PlusSquareIcon, UserRoundCheck, UserX } from 'lucide-react';
 import Modal from '../Modal';
+import { useAuth } from '../../contexts/AuthContext';
+import Tooltip from '../utils/Tooltip';
 
 interface DeedCardProps {
   deed: Deed;
@@ -15,6 +17,8 @@ interface DeedCardProps {
 }
 
 export default function DeedDetailsModal({ deed, open, setOpen }: DeedCardProps) {
+  const {currentUser} = useAuth();
+
   const [commentOpen, setCommentOpen] = useState(false);
   const [comment, setComment] = useState('');
   const [toggleCreateComment, setToggleCreateComment] = useState(false);
@@ -72,7 +76,19 @@ export default function DeedDetailsModal({ deed, open, setOpen }: DeedCardProps)
             <h4 className="text-lg font-semibold">Comments [{deed.comments.length}]</h4>
             {commentOpen ? <ChevronDown /> : <ChevronRight />}
           </div>
-          <PlusSquareIcon className="cursor-pointer" onClick={() => setToggleCreateComment(!toggleCreateComment)} />
+          {
+            currentUser
+              ?
+              <PlusSquareIcon
+              className="cursor-pointer"
+                onClick={() => setToggleCreateComment(!toggleCreateComment)} />
+              : <div className="relative group">
+                  <PlusSquareIcon
+                    className="cursor-pointer aria-disabled:opacity-20"
+                  aria-disabled="true" />
+                {!currentUser && <Tooltip text='Login or register to add comment' />}
+              </div>
+          }
         </div>
         {/* Create Comment Section */}
         {toggleCreateComment && <form action="">
