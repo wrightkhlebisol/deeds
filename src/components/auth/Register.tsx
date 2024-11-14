@@ -5,9 +5,9 @@ import Modal from '../Modal';
 import { useAuth } from '../../contexts/AuthContext';
 
 interface RegisterProps {
-  open: boolean;
-  setOpen: (value: boolean) => void;
-  openLogin: (value: boolean) => void;
+  readonly open: boolean;
+  readonly setOpen: (value: boolean) => void;
+  readonly openLogin: (value: boolean) => void;
 }
 
 export default function Register({ open, setOpen, openLogin }: RegisterProps) {
@@ -19,13 +19,24 @@ export default function Register({ open, setOpen, openLogin }: RegisterProps) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
-  const [linkedin, setLinkedin] = useState('');
+  const [linkedInUrl, setLinkedInUrl] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const toggleLogin = () => {
     setOpen(!open)
     openLogin(true)
+  }
+
+  const setRegisterDefaults = () => {
+    setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+      setIsAnonymous(false)
+      setLinkedInUrl('')
+      setOpen(false);
   }
 
   const registerUser = async () => {
@@ -38,7 +49,7 @@ export default function Register({ open, setOpen, openLogin }: RegisterProps) {
         return;
       }
       // Call the register service
-      const { error } = await createUser(email, password)
+      const { error } = await createUser({firstName, lastName, email, password, isAnonymous, linkedInUrl})
       if (error) {
         const errorCode = (error as { code?: string })?.code
         switch (errorCode) {
@@ -64,13 +75,7 @@ export default function Register({ open, setOpen, openLogin }: RegisterProps) {
         return;
       }
 
-      setFirstName('')
-      setLastName('')
-      setEmail('')
-      setPassword('')
-      setConfirmPassword('')
-      setIsAnonymous(false)
-      setLinkedin('')
+      setRegisterDefaults();
     } catch (error) {
       console.error(error);
       setError('Failed to register. Please try again.');
@@ -184,8 +189,8 @@ export default function Register({ open, setOpen, openLogin }: RegisterProps) {
                 'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-black/25'
               )}
               type='url'
-              value={linkedin}
-              onChange={e => setLinkedin(e.target.value)}
+              value={linkedInUrl}
+              onChange={e => setLinkedInUrl(e.target.value)}
               required
             />
           </Field>

@@ -3,16 +3,19 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import DeedCard from '../components/deeds/DeedCard';
 import CreateDeedModal from '../components/deeds/CreateDeedModal';
 import Tooltip from '../components/utils/Tooltip';
-import { DeedService } from '../services';
+import { DeedService, UserService } from '../services';
 import { Deed } from '../types';
 import { useAuth } from '../contexts/AuthContext';
+import { useParams } from 'react-router-dom';
 
 export default function Profile() {
   const { currentUser } = useAuth();
 
   const [deeds, setDeeds] = useState<Deed[]>([])
+  const [userInfo, setUserInfo] = useState({})
   const [isOpened, setIsOpened] = useState(false)
   const toggleModal = () => setIsOpened(!isOpened)
+  const {userId} = useParams()
 
   useEffect( () => {
     async function getDeeds() { 
@@ -20,6 +23,15 @@ export default function Profile() {
       setDeeds(userDeeds)
     }
     getDeeds();
+  }, [])
+
+  useEffect(() => {
+    async function getUserInfo() {
+      const userDetails = await UserService.getUser(userId);
+      setUserInfo(userDetails);
+    }
+
+    getUserInfo();
   }, [])
   
   return (

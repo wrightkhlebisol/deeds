@@ -49,6 +49,7 @@ export class DeedService {
       votes: { up: 0, down: 0 }
     };
 
+
     // For demo purposes, just return a dummy ID
     return deed.hash as unknown as Deed;
   }

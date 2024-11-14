@@ -17,7 +17,7 @@ export default function App() {
             <div className="p-6">
               <Routes>
                 <Route index element={<Home />} />
-                <Route path="/profile/:id" element={<Profile />} />
+                <Route path="/profile/:userId" element={<Profile />} />
               </Routes>
             </div>
           </div>

@@ -46,19 +46,22 @@ export interface Deed {
 }
 
 export interface UserProfile {
-  id: string;
+  id?: string;
   firstName: string;
   lastName: string;
-  imageUrl: string;
-  summary: string;
   email: string;
-  dateOfBirth: Date;
-  isVerified: boolean;
-  rating: number;
-  totalGreen: number;
-  totalYellow: number;
-  totalRed: number;
-  claimedPages: string[];
-  createdAt: Date;
-  updatedAt: Date;
+  password?: string | null;
+  isAnonymous?: boolean;
+  imageUrl?: string;
+  summary?: string;
+  linkedInUrl?: string;
+  dateOfBirth?: Date;
+  isVerified?: boolean;
+  rating?: number;
+  totalGreen?: number;
+  totalYellow?: number;
+  totalRed?: number;
+  claimedPages?: string[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }
