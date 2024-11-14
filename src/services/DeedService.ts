@@ -29,7 +29,7 @@ export class DeedService {
     return Math.min(weight, 2.0); // Cap at 2.0
   }
 
-  static async createDeed(deedData: Partial<Deed>): Promise<string> {
+  static async createDeed(deedData: Partial<Deed>): Promise<Deed> {
     const hash = await generateHash(JSON.stringify(deedData));
     const provenance = await generateProvenance(deedData);
     const weight = this.calculateWeight(
@@ -50,7 +50,7 @@ export class DeedService {
     };
 
     // For demo purposes, just return a dummy ID
-    return 'new-deed-id';
+    return deed.hash as unknown as Deed;
   }
 
   static async getDeedsForUser(userId: string): Promise<Deed[]> {
@@ -62,5 +62,9 @@ export class DeedService {
   static async voteOnDeed(deedId: string, isUpvote: boolean): Promise<void> {
     // For demo purposes, just log the vote
     console.log(`Vote recorded: ${isUpvote ? 'up' : 'down'} for deed ${deedId}`);
+  }
+
+  static async getAllDeeds(): Promise<Deed[]> {
+    return deeds;
   }
 } 
